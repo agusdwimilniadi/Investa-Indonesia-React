@@ -3,6 +3,30 @@ import imgPembayaran from "../asset/img/asset/footer/pembayaran.jpeg";
 let Footer = () => {
   return (
     <>
+      <section className="motto-bottom">
+        <div className="motto-bottom-content">
+          <div className="container py-5">
+            <div className="row">
+              <div className="col-md-6 text-center my-auto">
+                <a href="proyek.html">
+                  <button type="button" className="btn btn-primary btn-custom">
+                    Mulai Sekarang !
+                  </button>
+                </a>
+              </div>
+              <div className="col-md-6 text-right">
+                <p className="motto-tagline">
+                  #Invest, Suspanport, Get Benefit
+                </p>
+                <h1 className="motto-title">
+                  Bangkitkan Ekonomi, Awali dengan Investasi
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="footer">
         <div className="container-fluid">
           <div className="container pt-5">

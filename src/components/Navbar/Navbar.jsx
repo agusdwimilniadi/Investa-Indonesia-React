@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import logo from "../asset/img/logo/NEW-INVESTA.png";
 let Navbar = () => {
   return (
     <>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark">
-        <a href="index.html" className="navbar-brand">
+        <Link to="#" className="navbar-brand">
           <img src={logo} alt="Logo-Investa" />
-        </a>
+        </Link>
         <button
           type="button"
           className="navbar-toggler"
@@ -16,22 +17,22 @@ let Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav">
-            <a href="index.html" className="nav-item nav-link on-active">
-              Home
-            </a>
-            <a href="cara-kerja.html" className="nav-item nav-link">
+            <Link to="/" className="nav-item nav-link on-active">
+              Beranda
+            </Link>
+            <Link to="/carakerja" className="nav-item nav-link">
               Cara Kerja
-            </a>
-            <a href="proyek.html" className="nav-item nav-link">
+            </Link>
+            <Link to="/proyek" className="nav-item nav-link">
               Proyek
-            </a>
-            <a href="mitra.html" className="nav-item nav-link">
+            </Link>
+            <Link to="/mitra" className="nav-item nav-link">
               Mitra
-            </a>
+            </Link>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to="#"
                 id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -39,24 +40,24 @@ let Navbar = () => {
                 aria-expanded="false"
               >
                 Lainnya
-              </a>
+              </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="tentang-kami.html">
+                <Link className="dropdown-item" to="#">
                   Tentang Kami
-                </a>
-                <a className="dropdown-item" href="faq.html">
+                </Link>
+                <Link className="dropdown-item" to="#">
                   FAQ
-                </a>
+                </Link>
               </div>
             </li>
           </div>
           <div className="navbar-nav ml-auto">
-            <a href="login.html" className="nav-item nav-link on-active">
+            <Link to="login.html" className="nav-item nav-link on-active">
               Login
-            </a>
-            <a href="register.html" className="nav-item nav-link">
+            </Link>
+            <Link to="register.html" className="nav-item nav-link">
               Register
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
