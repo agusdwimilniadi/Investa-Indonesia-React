@@ -62,7 +62,7 @@ let Card = ({
               </div>
               <div className="col-md-5 pt-2 text-right">
                 <span className="text-percentage align-middle">
-                  {presentasi} %
+                  {presentasi.toFixed(2)} %
                 </span>
               </div>
             </div>

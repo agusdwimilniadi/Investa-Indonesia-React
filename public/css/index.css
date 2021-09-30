@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 *{ margin: 0; padding: 0; font: 'Poppins', 'sans-serif';}
-body{background-color: lightgray;}
+body{background-color: white;}
 
 .navbar{padding: 25px; padding-top: 10px; padding-bottom: 15px; font-family: 'Ubuntu', 'sans-serif'; transition: 0.3s; font-weight: 5000;
 }
@@ -25,7 +25,6 @@ body{background-color: lightgray;}
     background-image: url('../asset/img/Menabung-Syariah.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 .jumbotron-poly-faq{
     background-image: url('../img/asset/faq/faq.png');
@@ -54,7 +53,6 @@ body{background-color: lightgray;}
 .jumbotron-content{
     background-color: rgba(0, 0, 0, 0.7);
     height: 100vh;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     text-align: center;
     color: white;
 }
@@ -374,5 +372,10 @@ body{background-color: lightgray;}
 }
 
 .img-shadow{
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 12px -4px rgba(0,0,0,1);
+-webkit-box-shadow: 3px 3px 12px -4px rgba(0,0,0,1);
+-moz-box-shadow: 3px 3px 12px -4px rgba(0,0,0,1);
+}
+.bg-investa {
+    background-color: #95DBE5;
 }

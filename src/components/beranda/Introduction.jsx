@@ -1,7 +1,7 @@
 import img from "../asset/img/asset/motto-top.png";
 let Introduction = () => {
   return (
-    <section className="motto-top">
+    <section className="motto-top" style={{ backgroundColor: "lightgrey" }}>
       <div className="container h-100">
         <div className="row align-items-center h-100">
           <div className="col-md-6 mx-auto text-left">

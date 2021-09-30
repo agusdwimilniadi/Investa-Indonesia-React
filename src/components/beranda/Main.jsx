@@ -43,7 +43,10 @@ let Main = () => {
 
   return (
     <>
-      <section className="jumbotron jumbotron-fluid jumbotron-poly">
+      <section
+        className="jumbotron jumbotron-fluid jumbotron-poly"
+        style={{ backgroundColor: "lightgrey" }}
+      >
         <div className="h-100 d-flex justify-content-center jumbotron-content">
           <div className="my-auto">
             <p className="jumbotron-title tes-jumbo">Investa</p>
@@ -88,7 +91,6 @@ let Main = () => {
                           }
                           link_foto={value.link_foto_proyek}
                           alamat_mitra={value.alamat_mitra}
-                          allData={value}
                         />
                       )}
                     </div>

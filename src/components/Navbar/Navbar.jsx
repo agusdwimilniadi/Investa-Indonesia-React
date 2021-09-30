@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 import logo from "../asset/img/logo/NEW-INVESTA.png";
 let Navbar = () => {
+  const location = useLocation();
+  const nowLocation = location.pathname;
+
   return (
     <>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark">
-        <Link to="#" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <img src={logo} alt="Logo-Investa" />
         </Link>
         <button
@@ -17,16 +21,44 @@ let Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav">
-            <Link to="/" className="nav-item nav-link on-active">
+            <Link
+              to="/"
+              className={
+                nowLocation === "/"
+                  ? "nav-item nav-link on-active"
+                  : "nav-item nav-link"
+              }
+            >
               Beranda
             </Link>
-            <Link to="/carakerja" className="nav-item nav-link">
+            <Link
+              to="/carakerja"
+              className={
+                nowLocation === "/carakerja"
+                  ? "nav-item nav-link on-active"
+                  : "nav-item nav-link"
+              }
+            >
               Cara Kerja
             </Link>
-            <Link to="/proyek" className="nav-item nav-link">
+            <Link
+              to="/proyek"
+              className={
+                nowLocation === "/proyek"
+                  ? "nav-item nav-link on-active"
+                  : "nav-item nav-link"
+              }
+            >
               Proyek
             </Link>
-            <Link to="/mitra" className="nav-item nav-link">
+            <Link
+              to="/mitra"
+              className={
+                nowLocation === "/mitra"
+                  ? "nav-item nav-link on-active"
+                  : "nav-item nav-link"
+              }
+            >
               Mitra
             </Link>
             <li className="nav-item dropdown">
@@ -52,7 +84,7 @@ let Navbar = () => {
             </li>
           </div>
           <div className="navbar-nav ml-auto">
-            <Link to="login.html" className="nav-item nav-link on-active">
+            <Link to="login.html" className="nav-item nav-link">
               Login
             </Link>
             <Link to="register.html" className="nav-item nav-link">
