@@ -41,10 +41,8 @@ let DetailProyek = (props) => {
 
   useEffect(() => {
     setDataCard(data?.campaign_project[0]);
-    // console.log("data card", dataCard?.dana_campaigns_aggregate);
   }, [data]);
 
-  console.log(props);
   let persentase = (
     (dataCard?.dana_campaigns_aggregate?.aggregate?.sum.total_donasi /
       dataCard?.target_total_dana) *

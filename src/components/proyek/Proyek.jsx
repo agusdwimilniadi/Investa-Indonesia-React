@@ -77,6 +77,7 @@ let Proyek = () => {
             </div>
           </div>
         </div>
+        {}
         <div className="container mt-2 pb-5">
           <div className="row">
             {data?.campaign_project.map((value) => (
