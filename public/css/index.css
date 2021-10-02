@@ -25,6 +25,8 @@ body{background-color: white;}
     background-image: url('../asset/img/Menabung-Syariah.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 .jumbotron-poly-faq{
     background-image: url('../img/asset/faq/faq.png');
@@ -37,18 +39,26 @@ body{background-color: white;}
     background-origin: content-box;
     background-position: center;
     background-image: url('../img/logo/NEW-INVESTA-BORDER.png');
-    background-size: 70%;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 .jumbotron-non-poly{
     background-color: white;
-    background-image: url('../asset//img/proyek.jpg');
+    background-image: url('../asset//img/proyek.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 .jumbotron-gradation{
-    background-image: linear-gradient(to right, #078282, #094343);
+    background-image: url('../asset/img/JumbotronMitra.jpeg');
     color: white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .jumbotron-content{
     background-color: rgba(0, 0, 0, 0.7);

@@ -26,30 +26,37 @@ let Investasi = (props) => {
   const INVESTOR_INPUT = gql`
     mutation MyMutation(
       $nama: String = ""
-      $telepon: String = ""
-      $email: String = ""
       $total_donasi: bigint = ""
       $campaign_project_id: Int = 10
+      $telepon: String = ""
       $bukti_transfer: String = ""
+      $email: String = ""
     ) {
-      insert_dana_campaign_investor(
+      insert_user(
         objects: {
-          user: {
+          nama: $nama
+          role: "investor"
+          telepon: $telepon
+          email: $email
+          bukti_transfer: $bukti_transfer
+          dana_campaigns: {
             data: {
-              nama: $nama
-              role: "investor"
-              telepon: $telepon
-              email: $email
+              total_donasi: $total_donasi
+              campaign_project_id: $campaign_project_id
             }
           }
-          total_donasi: $total_donasi
-          campaign_project_id: $campaign_project_id
-          bukti_transfer: $bukti_transfer
         }
       ) {
         returning {
-          total_donasi
+          nama
+          id
+          email
+          role
+          telepon
           bukti_transfer
+          dana_campaigns {
+            total_donasi
+          }
         }
       }
     }
@@ -309,9 +316,13 @@ let Investasi = (props) => {
             </div>
           </div>
           <div className="col-md-4 text-left" style={{ paddingTop: "2.5%" }}>
+            <span className="text-percentage align-middle mr-4">
+              {progress.toFixed(2)} %
+            </span>
             <div className="btn btn-primary" onClick={handleUpload}>
               Upload Image
             </div>
+            {console.log(i_url)}
             <div>{i_url}</div>
           </div>
         </div>

@@ -9,6 +9,10 @@ let Jumbotron = () => {
         <div className="h-100 d-flex justify-content-center jumbotron-content-non-poly">
           <div className="my-auto">
             <p className="jumbotron-title">Proyek</p>
+            <span className="jumbotron-text">
+              Investasikan uang anda, dan dapatkan return dari hasil pertanian
+              nusantara
+            </span>
           </div>
         </div>
       </section>

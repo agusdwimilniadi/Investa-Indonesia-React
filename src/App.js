@@ -5,6 +5,7 @@ import Main from "./components/beranda/Main";
 import DetailProyek from "./components/detailProyek/detailProyek";
 import Footer from "./components/Footer/Footer";
 import Investasi from "./components/investasi/Investasi";
+import Mitra from "./components/mitra/Mitra";
 import Navbar from "./components/Navbar/Navbar";
 import Proyek from "./components/proyek/Proyek";
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/proyek" exact component={Proyek} />
       <Route path="/proyek/:id" exact component={DetailProyek} />
       <Route path="/investasi/:id" exact component={Investasi} />
+      <Route path="/mitra" exact component={Mitra} />
 
       <Footer />
     </>
