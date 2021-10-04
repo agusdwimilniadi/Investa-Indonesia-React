@@ -1,7 +1,9 @@
 import { useMutation, useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { storage } from "../firebase";
+import Loading from "../asset/img/Loading.svg";
 let Investasi = (props) => {
   const getData = gql`
   subscription MySubscription {
@@ -74,37 +76,29 @@ let Investasi = (props) => {
   const [progress, setProgress] = useState(0);
 
   // END DATA CATCH
+  const history = useHistory();
 
+  const detailProyek = () => {
+    history.push({
+      pathname: `/proyek/${parseInt(props.match.params.id)}`,
+    });
+  };
   // INSERT DANA INVESTOR
   const [insertDana] = useMutation(INVESTOR_INPUT);
 
   const handleInput = (event) => {
-    let validasi = prompt(
-      `Anda akan menginvestasikan nominal Rp. ${Intl.NumberFormat([
-        "ban",
-        "id",
-      ]).format(i_nominal)} ketik SETUJU untuk melanjutkan`
-    );
-
-    if (validasi === "SETUJU") {
-      insertDana({
-        variables: {
-          nama: i_nama,
-          telepon: i_noTelepon,
-          email: i_email,
-          total_donasi: i_nominal,
-          bukti_transfer: i_url,
-          campaign_project_id: parseInt(props.match.params.id),
-        },
-      });
-      alert(`Investasi dari " ${i_nama} sebesar ${i_nominal} BERHASIL`);
-      return true;
-    } else if (validasi === "" || validasi === null) {
-      alert("Transaksi dibatalkan");
-    } else {
-      alert("Transaksi dibatalkan");
-    }
-    event.preventDefault();
+    insertDana({
+      variables: {
+        nama: i_nama,
+        telepon: i_noTelepon,
+        email: i_email,
+        total_donasi: i_nominal,
+        bukti_transfer: i_url,
+        campaign_project_id: parseInt(props.match.params.id),
+      },
+    });
+    detailProyek();
+    return false;
   };
   console.log("Image,", i_image);
   const handleUpload = () => {
@@ -174,164 +168,223 @@ let Investasi = (props) => {
   ).toFixed(2);
 
   return (
-    <div className="container py-5">
-      <br />
-      <br />
-      <div className="row">
+    <>
+      <div>
         <div
-          className="col-md-12 "
-          style={{ textAlign: "center", display: "block" }}
+          className="modal fade"
+          id="exampleModalCenter"
+          tabIndex={-1}
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
         >
-          <img
-            src={dataCampaign?.link_foto_proyek}
-            alt={`gambar-info ${dataCampaign?.link_foto_proyek}`}
-            className="w-100 m-0 p-0 rounded img-shadow"
-            style={{
-              maxWidth: "40%",
-              height: "220px",
-              objectFit: "cover",
-            }}
-          />
-        </div>
-      </div>
-
-      <div className="row py-2">
-        <div className="col-md-3"></div>
-        <div className="col-md-6">
-          <div className="row">
-            <div className="col-md-6 py-2">
-              <div className="text-left text-green">
-                Rp.{" "}
-                {Intl.NumberFormat(["ban", "id"]).format(
-                  dataCampaign?.dana_campaigns_aggregate?.aggregate?.sum
-                    .total_donasi
-                )}
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">
+                  Konfirmasi
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
-            </div>
-            <div className="col-md-6">
-              <div className="text-right">
-                dari Rp.
-                {Intl.NumberFormat(["ban", "id"]).format(
-                  dataCampaign?.target_total_dana
-                )}
+              <div className="modal-body">
+                Apakah anda yakin ingin menginvestasikan dana sebesar Rp.{" "}
+                {Intl.NumberFormat(["ban", "id"]).format(i_nominal)} ?
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  data-dismiss="modal"
+                  onClick={handleInput}
+                >
+                  Yakin
+                </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="container py-5">
+        <br />
+        <br />
+        <div className="row">
+          <div
+            className="col-md-12 "
+            style={{ textAlign: "center", display: "block" }}
+          >
+            <img
+              src={dataCampaign?.link_foto_proyek}
+              alt={`gambar-info ${dataCampaign?.link_foto_proyek}`}
+              className="w-100 m-0 p-0 rounded img-shadow"
+              style={{
+                maxWidth: "40%",
+                height: "220px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        </div>
 
+        <div className="row py-2">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-6 py-2">
+                <div className="text-left text-green">
+                  Rp.{" "}
+                  {Intl.NumberFormat(["ban", "id"]).format(
+                    dataCampaign?.dana_campaigns_aggregate?.aggregate?.sum
+                      .total_donasi
+                  )}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="text-right">
+                  dari Rp.
+                  {Intl.NumberFormat(["ban", "id"]).format(
+                    dataCampaign?.target_total_dana
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="progress">
+              <div
+                className="progress-bar bg-investa"
+                role="progressbar"
+                style={{ width: `${persentase}%` }}
+                aria-valuenow={25}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              />
+            </div>
+            <div className="pt-2 text-right">
+              <span className="text-percentage align-middle">
+                {persentase} %
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="my-3" style={{ textAlign: "center" }}>
+          Nomor Rekening: {dataCampaign?.bank_mitra} -{" "}
+          {dataCampaign?.nomor_rekening_mitra} atas nama{" "}
+          {dataCampaign?.atas_nama_rekening}
+        </div>
+        <form className="form-group">
+          <div className="box-form">
+            <label htmlFor="nama">Nama Lengkap :</label>
+            <input
+              type="text"
+              name="nama"
+              id="nama"
+              placeholder="ex: Agus DM"
+              autoComplete="off"
+              onChange={onChangeNama}
+              required
+            />
+          </div>
+          <div className="box-form">
+            <label htmlFor="email">Email :</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="ex: agusdwimill@gmail.com"
+              autoComplete="off"
+              onChange={onChangeEmail}
+              required
+            />
+          </div>
+          <div className="box-form">
+            <label htmlFor="nominal">Nominal :</label>
+            <input
+              type="number"
+              name="nominal"
+              id="nominal"
+              placeholder="ex: hanya masukkan angka"
+              autoComplete="off"
+              onChange={onChangeNominal}
+              required
+            />
+          </div>
+          <div className="box-form">
+            <label htmlFor="noTelepon">Nomor Telepon :</label>
+            <input
+              type="text"
+              name="noTelepon"
+              id="noTelepon"
+              placeholder="ex: hanya masukkan angka"
+              autoComplete="off"
+              onChange={onChangeNoTelepon}
+              required
+            />
+          </div>
           <div className="progress">
             <div
               className="progress-bar bg-investa"
               role="progressbar"
-              style={{ width: `${persentase}%` }}
+              style={{ width: `${progress}%` }}
               aria-valuenow={25}
               aria-valuemin={0}
               aria-valuemax={100}
             />
           </div>
-          <div className="pt-2 text-right">
-            <span className="text-percentage align-middle">{persentase} %</span>
-          </div>
-        </div>
-      </div>
-      <div className="my-3" style={{ textAlign: "center" }}>
-        Nomor Rekening: {dataCampaign?.bank_mitra} -{" "}
-        {dataCampaign?.nomor_rekening_mitra} atas nama{" "}
-        {dataCampaign?.atas_nama_rekening}
-      </div>
-      <form onSubmit={handleInput} className="form-group">
-        <div className="box-form">
-          <label htmlFor="nama">Nama Lengkap :</label>
-          <input
-            type="text"
-            name="nama"
-            id="nama"
-            placeholder="ex: Agus DM"
-            autoComplete="off"
-            onChange={onChangeNama}
-            required
-          />
-        </div>
-        <div className="box-form">
-          <label htmlFor="email">Email :</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="ex: agusdwimill@gmail.com"
-            autoComplete="off"
-            onChange={onChangeEmail}
-            required
-          />
-        </div>
-        <div className="box-form">
-          <label htmlFor="nominal">Nominal :</label>
-          <input
-            type="number"
-            name="nominal"
-            id="nominal"
-            placeholder="ex: hanya masukkan angka"
-            autoComplete="off"
-            onChange={onChangeNominal}
-            required
-          />
-        </div>
-        <div className="box-form">
-          <label htmlFor="noTelepon">Nomor Telepon :</label>
-          <input
-            type="text"
-            name="noTelepon"
-            id="noTelepon"
-            placeholder="ex: hanya masukkan angka"
-            autoComplete="off"
-            onChange={onChangeNoTelepon}
-            required
-          />
-        </div>
-        <div className="progress">
-          <div
-            className="progress-bar bg-investa"
-            role="progressbar"
-            style={{ width: `${progress}%` }}
-            aria-valuenow={25}
-            aria-valuemin={0}
-            aria-valuemax={100}
-          />
-        </div>
-        <div className="row">
-          <div className="col-md-8">
-            <div className="box-form">
-              <label htmlFor="fileTransfer">Upload file transfer :</label>
-              <input
-                type="file"
-                name="fileTransfer"
-                id="fileTransfer"
-                placeholder="ex: hanya masukkan angka"
-                autoComplete="off"
-                onChange={onChangeImage}
-                required
-              />
+          <div className="row">
+            <div className="col-md-8">
+              <div className="box-form">
+                <label htmlFor="fileTransfer">Upload file transfer :</label>
+                <input
+                  type="file"
+                  name="fileTransfer"
+                  id="fileTransfer"
+                  placeholder="ex: hanya masukkan angka"
+                  autoComplete="off"
+                  onChange={onChangeImage}
+                  required
+                />
+              </div>
+            </div>
+            <div className="col-md-4 text-left" style={{ paddingTop: "2.5%" }}>
+              <span className="text-percentage align-middle mr-4">
+                {progress.toFixed(2)} %
+              </span>
+              <div className="btn btn-primary" onClick={handleUpload}>
+                Upload Image
+              </div>
+              {console.log(i_url)}
+              <div>{i_url}</div>
             </div>
           </div>
-          <div className="col-md-4 text-left" style={{ paddingTop: "2.5%" }}>
-            <span className="text-percentage align-middle mr-4">
-              {progress.toFixed(2)} %
-            </span>
-            <div className="btn btn-primary" onClick={handleUpload}>
-              Upload Image
-            </div>
-            {console.log(i_url)}
-            <div>{i_url}</div>
-          </div>
-        </div>
-        <br />
-        <br />
-        <button type="submit" className="btn btn-primary">
-          Investasi
-        </button>
-      </form>
+          <br />
+          <br />
 
-      {/* <h1>Haloo Container {props.match.params.id}</h1> */}
-    </div>
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            Investasi
+          </button>
+        </form>
+
+        {/* <h1>Haloo Container {props.match.params.id}</h1> */}
+      </div>
+    </>
   );
 };
 export default Investasi;

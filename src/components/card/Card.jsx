@@ -1,4 +1,17 @@
+import { useMutation } from "@apollo/client";
+import gql from "graphql-tag";
 import { useHistory } from "react-router";
+import Loading from "../asset/img/Loading.svg";
+
+const DELETE_BY_ID = gql`
+  mutation MyMutation($_eq: Int = 10) {
+    delete_campaign_project(where: { id: { _eq: $_eq } }) {
+      returning {
+        id
+      }
+    }
+  }
+`;
 let Card = ({
   /* eslint-disable */
   idCard = { idCard },
@@ -19,13 +32,62 @@ let Card = ({
       pathname: `/proyek/${idCard}`,
     });
   };
+
+  // DELETE
+  const [deleteProyek, { loading: loadingDelete }] = useMutation(DELETE_BY_ID);
+  const deleteClick = () => {
+    deleteProyek({
+      variables: {
+        _eq: idCard,
+      },
+    });
+  };
+  // END DELETE
   return (
     <>
       <div>
         <div className="card mt-4">
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn bg-transparent"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style={{
+                position: "absolute",
+                right: 0,
+              }}
+            >
+              <i
+                className="fas fa-caret-square-down"
+                style={{ color: "white" }}
+              ></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-left">
+              <button
+                class="dropdown-item"
+                type="button"
+                style={{ cursor: "pointer" }}
+                onClick={detailProyek}
+              >
+                Detail
+              </button>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-target="#exampleModalCenter"
+                style={{ cursor: "pointer" }}
+                onClick={deleteClick}
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+
           <img
             className="card-img-top"
-            src={link_foto}
+            src={loadingDelete ? Loading : link_foto}
             alt={`Gambar ${link_foto}`}
             style={{ maxWidth: "100%", height: "250px", objectFit: "cover" }}
           />
@@ -70,11 +132,7 @@ let Card = ({
             {presentasi >= 100 ? (
               <button class="btn btn-custom-light">Dana Terpenuhi</button>
             ) : (
-              <button
-                href="detail-proyek.html"
-                class="btn btn-primary btn-custom"
-                onClick={detailProyek}
-              >
+              <button class="btn btn-primary btn-custom" onClick={detailProyek}>
                 Investasi
               </button>
             )}

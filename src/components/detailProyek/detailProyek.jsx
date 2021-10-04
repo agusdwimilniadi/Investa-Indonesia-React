@@ -162,13 +162,25 @@ let DetailProyek = (props) => {
                 </div>
                 <div className="col-md-5">
                   <div className="detail-title p-0 m-0 mb-2 text-center">
-                    <Link
-                      to={`/investasi/${parseInt(props.match.params.id)}`}
-                      className="btn btn-primary btn-custom-light-open w-100"
-                    >
-                      <i className="fa fa-holly-berry" />
-                      &nbsp;&nbsp;Ikut Investasi
-                    </Link>
+                    {persentase >= 100 ? (
+                      <button
+                        className="btn btn-secondary btn-custom-light-open w-100"
+                        disabled
+                        style={{ cursor: "no-drop" }}
+                      >
+                        <i className="fa fa-holly-berry" />
+                        &nbsp;&nbsp;Dana Tercukupi
+                      </button>
+                    ) : (
+                      <Link
+                        to={`/investasi/${parseInt(props.match.params.id)}`}
+                        className="btn btn-primary btn-custom-light-open w-100"
+                        disabled
+                      >
+                        <i className="fa fa-holly-berry" />
+                        &nbsp;&nbsp;Ikut Investasi
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,11 +1,12 @@
 import { useQuery, useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
+import { useState } from "react";
 import Card from "../card/Card";
 import Jumbotron from "./Jumbotron";
 
 const getAll = gql`
-  subscription MySubscription {
-    campaign_project(order_by: { id: desc }) {
+  subscription MySubscription($where: campaign_project_bool_exp = {}) {
+    campaign_project(order_by: { id: desc }, where: $where) {
       atas_nama_rekening
       bank_mitra
       deskripsi_proyek
@@ -34,20 +35,29 @@ const getAll = gql`
     }
   }
 `;
-const countInvestor = gql`
-  query MyQuery {
-    dana_campaign_investor_aggregate {
-      aggregate {
-        count(columns: user_investor_id)
-      }
-    }
-  }
-`;
-
 let Proyek = () => {
-  const { data } = useSubscription(getAll);
-  const { dataInvestor } = useQuery(countInvestor);
-  console.log("data investor", dataInvestor);
+  const [subQuery, setSubQuery] = useState({ variables: { where: {} } });
+  const { data } = useSubscription(getAll, subQuery);
+
+  const [sektor, setSektor] = useState([]);
+
+  const getDataBySektor = () => {
+    setSubQuery({
+      variables: {
+        where: {
+          sektor_pengajuan: {
+            _eq: sektor,
+          },
+        },
+      },
+    });
+  };
+  const onChangeSektor = (e) => {
+    if (e.target) {
+      setSektor(e.target.value);
+      getDataBySektor();
+    }
+  };
 
   return (
     <>
@@ -63,11 +73,16 @@ let Proyek = () => {
           <div className="row">
             <div className="col-md-6"></div>
             <div className="col-md-4">
-              <select class="custom-select custom-select-md">
-                <option value="">Urutkan berdasarkan sektor</option>
-                <option value="Sektor Bahan Pokok">Bahan Pokok</option>
-                <option value="Sektor Buah">Buah Buahan</option>
-                <option value="Sektor Sayuran">sa</option>
+              <select
+                class="custom-select custom-select-md"
+                onChange={onChangeSektor}
+              >
+                <option value="" selected>
+                  Urutkan berdasarkan sektor
+                </option>
+                <option value="Pertanian">Sektor Pertanian</option>
+                <option value="Perkebunan">Sektor Perkebunan</option>
+                <option value="Buah Buahan">Sektor Buah-Buahan</option>
               </select>
             </div>
             <div className="col-md-2" style={{ padding: 0 }}>
