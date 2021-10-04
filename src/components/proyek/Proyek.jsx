@@ -45,8 +45,8 @@ const countInvestor = gql`
 `;
 
 let Proyek = () => {
-  const { data, loading, error } = useSubscription(getAll);
-  const { dataInvestor, loadingInvestor } = useQuery(countInvestor);
+  const { data } = useSubscription(getAll);
+  const { dataInvestor } = useQuery(countInvestor);
   console.log("data investor", dataInvestor);
 
   return (

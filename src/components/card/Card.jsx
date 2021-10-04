@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
-import img from "../asset/img/asset/gandum.jpg";
 let Card = ({
+  /* eslint-disable */
   idCard = { idCard },
   link_foto = { link_foto },
   sektor_pengajuan = { sektor_pengajuan },
@@ -26,7 +26,7 @@ let Card = ({
           <img
             className="card-img-top"
             src={link_foto}
-            alt="Card image cap"
+            alt={`Gambar ${link_foto}`}
             style={{ maxWidth: "100%", height: "250px", objectFit: "cover" }}
           />
           <div className="card-body text-center">

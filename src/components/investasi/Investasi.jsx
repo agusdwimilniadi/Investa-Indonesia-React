@@ -61,9 +61,8 @@ let Investasi = (props) => {
       }
     }
   `;
-  const { data, loading: loadingData, error } = useSubscription(getData);
+  const { data } = useSubscription(getData);
   let [dataCampaign, setDataCampaign] = useState([]);
-  let [dataRespons, setDataRespons] = useState(false);
 
   //DATA CATCH
   const [i_nama, setNama] = useState([]);
@@ -77,9 +76,7 @@ let Investasi = (props) => {
   // END DATA CATCH
 
   // INSERT DANA INVESTOR
-  const [insertDana, { data: dataDana, loading: loadingDana }] = useMutation(
-    INVESTOR_INPUT
-  );
+  const [insertDana] = useMutation(INVESTOR_INPUT);
 
   const handleInput = (event) => {
     let validasi = prompt(
@@ -187,7 +184,7 @@ let Investasi = (props) => {
         >
           <img
             src={dataCampaign?.link_foto_proyek}
-            alt="image-info"
+            alt={`gambar-info ${dataCampaign?.link_foto_proyek}`}
             className="w-100 m-0 p-0 rounded img-shadow"
             style={{
               maxWidth: "40%",

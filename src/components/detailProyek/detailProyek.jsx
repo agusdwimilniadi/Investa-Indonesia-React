@@ -36,7 +36,7 @@ let DetailProyek = (props) => {
       }
     }
   `;
-  const { data, loading, error } = useSubscription(getDataById);
+  const { data } = useSubscription(getDataById);
   let [dataCard, setDataCard] = useState([]);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ let DetailProyek = (props) => {
             <div className="col-md-4">
               <img
                 src={dataCard?.link_foto_proyek}
-                alt="image-info"
+                alt="info"
                 className="w-100 m-0 p-0 rounded img-shadow"
                 style={{
                   maxWidth: "100%",
@@ -152,6 +152,7 @@ let DetailProyek = (props) => {
                     <a
                       href={dataCard?.link_dokumen}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="btn btn-primary btn-custom w-100"
                     >
                       <i className="fa fa-download" />

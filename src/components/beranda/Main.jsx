@@ -39,7 +39,7 @@ const getAll = gql`
 `;
 
 let Main = () => {
-  const { data, loading, error } = useSubscription(getAll);
+  const { data, loading } = useSubscription(getAll);
 
   return (
     <>

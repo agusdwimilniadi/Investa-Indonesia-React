@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
-import { useMutation, useSubscription } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
 import { storage } from "../firebase";
 import JumbotronMitra from "./JumbotronMitra";
 
@@ -59,16 +59,8 @@ let Mitra = () => {
       }
     }
   `;
-  let [dataCampaign, setDataCampaign] = useState();
 
-  const [
-    insertNewCampaign,
-    {
-      data: newDataCampaign,
-      loading: loadingNewCampaign,
-      error: errorNewCampaign,
-    },
-  ] = useMutation(INPUT_CAMPAIGN);
+  const [insertNewCampaign] = useMutation(INPUT_CAMPAIGN);
   //   DATA CATCH
   const [nama, setNama] = useState([]);
   const [email, setEmail] = useState([]);
@@ -202,7 +194,7 @@ let Mitra = () => {
           alamat_mitra: alamatMitra,
           nama_kelompok_tani: namaKelompokTani,
           sektor_pengajuan: sektorPengajuan,
-          nama_proyek: namaKelompokTani,
+          nama_proyek: namaProyek,
           pengalaman_bertani: pengalamanBertani,
           persentase_bagi_hasil: persentaseBagiHasil,
           target_total_dana: targetTotal,
