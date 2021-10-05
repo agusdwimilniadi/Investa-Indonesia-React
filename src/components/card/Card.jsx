@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import { useHistory } from "react-router";
 import Loading from "../asset/img/Loading.svg";
+import { useLocation } from "react-router";
 
 const DELETE_BY_ID = gql`
   mutation MyMutation($_eq: Int = 10) {
@@ -24,12 +25,20 @@ let Card = ({
   dana_terkumpul = { dana_terkumpul },
   alamat_mitra = { alamat_mitra },
 }) => {
+  const location = useLocation();
+  const nowLocation = location.pathname;
+
   let presentasi = (dana_terkumpul / target_dana) * 100;
 
   const history = useHistory();
   const detailProyek = () => {
     history.push({
       pathname: `/proyek/${idCard}`,
+    });
+  };
+  const editProyek = () => {
+    history.push({
+      pathname: `/edit/${idCard}`,
     });
   };
 
@@ -47,43 +56,86 @@ let Card = ({
     <>
       <div>
         <div className="card mt-4">
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn bg-transparent"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style={{
-                position: "absolute",
-                right: 0,
-              }}
-            >
-              <i
-                className="fas fa-caret-square-down"
-                style={{ color: "white" }}
-              ></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-left">
-              <button
-                class="dropdown-item"
-                type="button"
-                style={{ cursor: "pointer" }}
-                onClick={detailProyek}
-              >
-                Detail
-              </button>
-              <button
-                class="dropdown-item"
-                type="button"
-                data-target="#exampleModalCenter"
-                style={{ cursor: "pointer" }}
-                onClick={deleteClick}
-              >
-                Hapus
-              </button>
-            </div>
-          </div>
+          {nowLocation == "/" ? null : (
+            <>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn bg-transparent"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                  }}
+                >
+                  <i
+                    className="fas fa-caret-square-down"
+                    style={{ color: "white" }}
+                  ></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-left">
+                  {presentasi >= 100 ? (
+                    <>
+                      {" "}
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        style={{ cursor: "pointer" }}
+                        data-toggle="modal"
+                        onClick={detailProyek}
+                      >
+                        Detail
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        style={{ cursor: "pointer" }}
+                        data-toggle="modal"
+                        data-target={`#staticBackdrop${nama_proyek}`}
+                        // onClick={editProyek}
+                      >
+                        Sunting
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        data-target="#exampleModalCenter"
+                        style={{ cursor: "pointer" }}
+                        onClick={deleteClick}
+                      >
+                        Hapus
+                      </button>{" "}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        style={{ cursor: "pointer" }}
+                        data-toggle="modal"
+                        data-target={`#staticBackdrop${nama_proyek}`}
+                        // onClick={editProyek}
+                      >
+                        Sunting
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        data-target="#exampleModalCenter"
+                        style={{ cursor: "pointer" }}
+                        onClick={deleteClick}
+                      >
+                        Hapus
+                      </button>{" "}
+                    </>
+                  )}
+                </div>
+              </div>{" "}
+            </>
+          )}
 
           <img
             className="card-img-top"
@@ -91,6 +143,47 @@ let Card = ({
             alt={`Gambar ${link_foto}`}
             style={{ maxWidth: "100%", height: "250px", objectFit: "cover" }}
           />
+          <div
+            className="modal fade"
+            id="staticBackdrop"
+            data-backdrop="static"
+            data-keyboard="false"
+            tabIndex={-1}
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">
+                    Modal title
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div className="modal-body">HALOOOOO {nama_proyek}</div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" className="btn btn-primary">
+                    Understood
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="card-body text-center">
             <p className="card-tag">{sektor_pengajuan}</p>
             <h5 className="card-title">{nama_proyek}</h5>

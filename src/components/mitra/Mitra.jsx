@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { storage } from "../firebase";
 import JumbotronMitra from "./JumbotronMitra";
+import { useHistory } from "react-router";
 
 let Mitra = () => {
   const INPUT_CAMPAIGN = gql`
@@ -179,6 +180,12 @@ let Mitra = () => {
   };
   // END ONCHANGE
 
+  const history = useHistory();
+  const pushToProyek = () => {
+    history.push({
+      pathname: `/proyek`,
+    });
+  };
   //   HANDLE INPUT
   const handleSubmit = (event) => {
     let validasi = prompt(
@@ -206,28 +213,10 @@ let Mitra = () => {
           link_foto_proyek: urlImage,
           deskripsi_proyek: deskripsiProyek,
           prospek_proyek: prospekProyek,
-
-          //   nama: nama,
-          //   email: email,
-          //   telepon: telepon,
-          //   alamat_mitra: alamatMitra,
-          //   nama_kelompok_tani: namaKelompokTani,
-          //   sektor_pengajuan: sektorPengajuan,
-          //   nama_proyek: namaProyek,
-          //   pengalaman_bertani: pengalamanBertani,
-          //   persentase_bagi_hasil: persentaseBagiHasil,
-          //   target_total_dana: targetTotal,
-          //   periode_panen: periodePanen,
-          //   bank_mitra: bankMitra,
-          //   nomor_rekening_mitra: nomorRekeningMitra,
-          //   atas_nama_rekening: atasNamaRekening,
-          //   link_dokumen: linkDokumen,
-          //   link_foto_proyek: urlImage,
-          //   deskripsi_proyek: deskripsiProyek,
-          //   prospek_proyek: prospekProyek,
         },
       });
       alert(`Pengajuan Proyek Telah Berhasil`);
+      pushToProyek();
       return true;
     } else if (validasi === "" || validasi === null) {
       alert("Transaksi dibatalkan");

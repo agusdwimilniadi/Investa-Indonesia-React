@@ -1,7 +1,8 @@
-import { useQuery, useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../card/Card";
+import EditMitra from "../mitra/EditMitra";
 import Jumbotron from "./Jumbotron";
 
 const getAll = gql`
@@ -41,6 +42,13 @@ let Proyek = () => {
 
   const [sektor, setSektor] = useState([]);
 
+  useEffect(() => {
+    if (sektor == "") {
+      setSubQuery({ variables: { where: {} } });
+    } else {
+      getDataBySektor();
+    }
+  }, [sektor]);
   const getDataBySektor = () => {
     setSubQuery({
       variables: {
@@ -55,7 +63,6 @@ let Proyek = () => {
   const onChangeSektor = (e) => {
     if (e.target) {
       setSektor(e.target.value);
-      getDataBySektor();
     }
   };
 
@@ -86,13 +93,14 @@ let Proyek = () => {
               </select>
             </div>
             <div className="col-md-2" style={{ padding: 0 }}>
-              <button type="button" class="btn btn-success btn-custom">
-                Success
-              </button>
+              <div class="btn btn-primary btn-custom p-2 mx-2">
+                {" "}
+                <i className="fas fa-filter"></i>{" "}
+              </div>
             </div>
           </div>
         </div>
-        {}
+
         <div className="container mt-2 pb-5">
           <div className="row">
             {data?.campaign_project.map((value) => (
@@ -110,6 +118,11 @@ let Proyek = () => {
                   }
                   link_foto={value.link_foto_proyek}
                   alamat_mitra={value.alamat_mitra}
+                />
+                <EditMitra
+                  key={value.id}
+                  id={value.id}
+                  nama_proyek={value.nama_proyek}
                 />
               </div>
             ))}

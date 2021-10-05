@@ -18,12 +18,12 @@ let Introduction = () => {
               kesepakatan perjanjian di awal. Konsepnya Investa bisa menguatkan
               satu sama lain dan saling membantu
             </p>
-            <a href="proyek.html">
-              <button type="button" className="btn btn-primary btn-custom">
-                Mulai Sekarang !
-              </button>
-            </a>
+
+            <button type="button" className="btn btn-primary btn-custom">
+              Mulai Sekarang !
+            </button>
           </div>
+
           <div className="col-md-6 mx-auto text-right motto-top-img">
             <img src={img} alt="motto-top" className="img-fluid h-100" />
           </div>

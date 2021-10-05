@@ -105,6 +105,7 @@ let DetailProyek = (props) => {
             </div>
             <div className="col-md-8">
               <span className="card-tag p-2">{dataCard?.sektor_pengajuan}</span>
+
               <h5 className="card-title mt-4">{dataCard?.nama_proyek}</h5>
               <div className="row">
                 <div className="col-md-12">

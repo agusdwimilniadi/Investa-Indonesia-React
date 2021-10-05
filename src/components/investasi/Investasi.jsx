@@ -3,7 +3,6 @@ import gql from "graphql-tag";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { storage } from "../firebase";
-import Loading from "../asset/img/Loading.svg";
 let Investasi = (props) => {
   const getData = gql`
   subscription MySubscription {

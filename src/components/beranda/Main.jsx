@@ -111,6 +111,7 @@ let Main = () => {
           </div>
         </div>
       </section>
+
       <JoinInvesta />
       <Testimonial />
     </>
