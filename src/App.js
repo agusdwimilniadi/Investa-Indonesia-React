@@ -12,6 +12,7 @@ import Mitra from "./components/mitra/Mitra";
 import Navbar from "./components/Navbar/Navbar";
 import Proyek from "./components/proyek/Proyek";
 import { useEffect } from "react";
+import ErrorPage from "./components/NotFound/NotFound";
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
         <Switch>
           <Route exact path="/masuk" component={LoginContainer} />
           <Route component={DefaultContainer} />
+          <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter>
     </>
