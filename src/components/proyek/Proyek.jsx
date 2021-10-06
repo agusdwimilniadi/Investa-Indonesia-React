@@ -184,6 +184,7 @@ let Proyek = () => {
                   link_foto_proyek={value.link_foto_proyek}
                   deskripsi_proyek={value.deskripsi_proyek}
                   prospek_proyek={value.prospek_proyek}
+                  nama_kelompok_tani={value.nama_kelompok_tani}
                   UpdateMitraById={UpdateMitraById}
                 />
               </div>

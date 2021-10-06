@@ -17,6 +17,7 @@ const EditMitra = ({
   link_foto_proyek,
   deskripsi_proyek,
   prospek_proyek,
+  nama_kelompok_tani,
   UpdateMitraById,
 }) => {
   const [data, setData] = useState({
@@ -35,6 +36,7 @@ const EditMitra = ({
     link_foto_proyek: link_foto_proyek,
     deskripsi_proyek: deskripsi_proyek,
     prospek_proyek: prospek_proyek,
+    nama_kelompok_tani: nama_kelompok_tani,
   });
   const onChange = (e) => {
     const name = e.target.name;
@@ -53,7 +55,7 @@ const EditMitra = ({
     updateMitra({
       variables: {
         _eq: idx,
-        nama_kelompok_tani: data.nama_proyek,
+        nama_kelompok_tani: data.nama_kelompok_tani,
         alamat_mitra: data.alamat_mitra,
         sektor_pengajuan: data.sektor_pengajuan,
         nama_proyek: data.nama_proyek,
@@ -110,7 +112,7 @@ const EditMitra = ({
                       id="nama"
                       placeholder="ex: Agus DM"
                       autoComplete="off"
-                      value={data.nama_proyek}
+                      value={data.nama_kelompok_tani}
                       onChange={onChange}
                       required
                     />
@@ -282,11 +284,11 @@ const EditMitra = ({
                     />
                   </div>
                   <div className="box-form">
-                    <label htmlFor="dokumenRincian">Link Foto Proyek :</label>
+                    <label htmlFor="linkFoto">Link Foto Proyek :</label>
                     <input
                       type="text"
                       name="link_foto_proyek"
-                      id="dokumenRincian"
+                      id="linkFoto"
                       placeholder="ex : https://dokumen.drive.google.com"
                       autoComplete="off"
                       onChange={onChange}
