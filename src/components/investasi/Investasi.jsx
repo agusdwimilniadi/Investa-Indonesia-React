@@ -364,8 +364,6 @@ let Investasi = (props) => {
               <div className="btn btn-primary" onClick={handleUpload}>
                 Upload Image
               </div>
-              {console.log(i_url)}
-              <div>{i_url}</div>
             </div>
           </div>
           <br />
