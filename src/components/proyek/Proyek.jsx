@@ -1,4 +1,4 @@
-import { useSubscription } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
 import { useEffect, useState } from "react";
 import Card from "../card/Card";
@@ -36,6 +36,51 @@ const getAll = gql`
     }
   }
 `;
+const UpdateMitraById = gql`
+  mutation MyMutation(
+    $_eq: Int = 10
+    $nama_kelompok_tani: String = ""
+    $alamat_mitra: String = ""
+    $sektor_pengajuan: String = ""
+    $nama_proyek: String = ""
+    $pengalaman_bertani: Int = 10
+    $persentase_bagi_hasil: Int = 10
+    $target_total_dana: bigint = ""
+    $periode_panen: Int = 10
+    $bank_mitra: String = ""
+    $nomor_rekening_mitra: String = ""
+    $atas_nama_rekening: String = ""
+    $link_dokumen: String = ""
+    $link_foto_proyek: String = ""
+    $deskripsi_proyek: String = ""
+    $prospek_proyek: String = ""
+  ) {
+    update_campaign_project(
+      where: { id: { _eq: $_eq } }
+      _set: {
+        nama_kelompok_tani: $nama_kelompok_tani
+        alamat_mitra: $alamat_mitra
+        sektor_pengajuan: $sektor_pengajuan
+        nama_proyek: $nama_proyek
+        pengalaman_bertani: $pengalaman_bertani
+        persentase_bagi_hasil: $persentase_bagi_hasil
+        target_total_dana: $target_total_dana
+        periode_panen: $periode_panen
+        bank_mitra: $bank_mitra
+        nomor_rekening_mitra: $nomor_rekening_mitra
+        atas_nama_rekening: $atas_nama_rekening
+        link_dokumen: $link_dokumen
+        link_foto_proyek: $link_foto_proyek
+        deskripsi_proyek: $deskripsi_proyek
+        prospek_proyek: $prospek_proyek
+      }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`;
 let Proyek = () => {
   const [subQuery, setSubQuery] = useState({ variables: { where: {} } });
   const { data } = useSubscription(getAll, subQuery);
@@ -65,6 +110,8 @@ let Proyek = () => {
       setSektor(e.target.value);
     }
   };
+
+  //UPDATE
 
   return (
     <>
@@ -123,6 +170,20 @@ let Proyek = () => {
                   key={value.id}
                   id={value.id}
                   nama_proyek={value.nama_proyek}
+                  alamat_mitra={value.alamat_mitra}
+                  sektor_pengajuan={value.sektor_pengajuan}
+                  pengalaman_bertani={value.pengalaman_bertani}
+                  persentase_bagi_hasil={value.persentase_bagi_hasil}
+                  total_bagi_hasil={value.persentase_bagi_hasil}
+                  periode_panen={value.periode_panen}
+                  bank_mitra={value.bank_mitra}
+                  nomor_rekening_mitra={value.nomor_rekening_mitra}
+                  atas_nama_rekening={value.atas_nama_rekening}
+                  link_dokumen={value.link_dokumen}
+                  link_foto_proyek={value.link_foto_proyek}
+                  deskripsi_proyek={value.deskripsi_proyek}
+                  prospek_proyek={value.prospek_proyek}
+                  UpdateMitraById={UpdateMitraById}
                 />
               </div>
             ))}
