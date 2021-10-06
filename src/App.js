@@ -31,6 +31,7 @@ function App() {
       <Route path="/mitra" exact component={Mitra} />
       <Route path="/edit/:id" exact component={EditMitra} />
       <Route path="/carakerja" exact component={CaraKerja} />
+      <Route component={ErrorPage} />
 
       <Footer />
     </>
@@ -41,7 +42,6 @@ function App() {
         <Switch>
           <Route exact path="/masuk" component={LoginContainer} />
           <Route component={DefaultContainer} />
-          <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter>
     </>

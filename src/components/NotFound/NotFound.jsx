@@ -9,6 +9,14 @@ const ErrorPage = () => {
     <>
       <br />
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="page-wrap d-flex flex-row align-items-center">
         <div className="container">
           <div className="row justify-content-center">
@@ -24,6 +32,13 @@ const ErrorPage = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 };
