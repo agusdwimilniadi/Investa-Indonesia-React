@@ -17,6 +17,7 @@ let Navbar = () => {
           className="navbar-toggler"
           data-toggle="collapse"
           data-target="#navbarCollapse"
+          style={{ color: "black" }}
         >
           <span className="navbar-toggler-icon" />
         </button>

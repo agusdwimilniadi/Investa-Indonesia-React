@@ -32,7 +32,6 @@ body{background-color: white;}
     background-image: url('../img/asset/faq/faq.png');
     background-size: cover;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 .jumbotron-poly-about{
     background-color: #078282;
@@ -61,7 +60,7 @@ body{background-color: white;}
     background-position: center;
 }
 .jumbotron-cara-kerja {
-    background-image: url('../asset/img/JumbotronMitra.jpeg');
+    background-image: url('../asset/img/carakerja.jpeg');
     color: white;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -167,7 +166,6 @@ body{background-color: white;}
     height: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
-    clip-path: polygon(100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
 }
 .sec-proyek{margin-top: 25px; background-color: white;}
 .proyek-container{
@@ -308,7 +306,6 @@ body{background-color: white;}
     background-color: #95dbe5;
     background-size: cover;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 .work-even{background-color: #95dbe5;}
 .work-even img{
@@ -319,7 +316,6 @@ body{background-color: white;}
     background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 
 .boxes{

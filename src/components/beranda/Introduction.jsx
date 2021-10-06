@@ -25,7 +25,7 @@ let Introduction = () => {
           </div>
 
           <div
-            className="col-md-6 mx-auto text-right motto-top-img"
+            className="col-md-6 mx-auto text-right motto-top-img img-intro"
             data-aos="fade-left"
           >
             <img src={img} alt="motto-top" className="img-fluid h-100" />
