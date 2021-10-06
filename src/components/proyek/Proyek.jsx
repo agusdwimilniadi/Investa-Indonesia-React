@@ -1,4 +1,4 @@
-import { useMutation, useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
 import { useEffect, useState } from "react";
 import Card from "../card/Card";
@@ -86,14 +86,6 @@ let Proyek = () => {
   const { data } = useSubscription(getAll, subQuery);
 
   const [sektor, setSektor] = useState([]);
-
-  useEffect(() => {
-    if (sektor == "") {
-      setSubQuery({ variables: { where: {} } });
-    } else {
-      getDataBySektor();
-    }
-  }, [sektor]);
   const getDataBySektor = () => {
     setSubQuery({
       variables: {
@@ -105,6 +97,15 @@ let Proyek = () => {
       },
     });
   };
+  /* eslint-disable */
+  useEffect(() => {
+    if (sektor == "") {
+      setSubQuery({ variables: { where: {} } });
+    } else {
+      getDataBySektor();
+    }
+  }, [sektor]);
+
   const onChangeSektor = (e) => {
     if (e.target) {
       setSektor(e.target.value);
@@ -136,7 +137,7 @@ let Proyek = () => {
                 </option>
                 <option value="Pertanian">Sektor Pertanian</option>
                 <option value="Perkebunan">Sektor Perkebunan</option>
-                <option value="Buah Buahan">Sektor Buah-Buahan</option>
+                <option value="Budidaya">Sektor Budidaya</option>
               </select>
             </div>
             <div className="col-md-2" style={{ padding: 0 }}>

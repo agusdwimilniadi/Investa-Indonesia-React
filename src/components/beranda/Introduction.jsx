@@ -3,7 +3,7 @@ let Introduction = () => {
   return (
     <section className="motto-top" style={{ backgroundColor: "lightgrey" }}>
       <div className="container h-100">
-        <div className="row align-items-center h-100">
+        <div className="row align-items-center h-100" data-aos="fade-right">
           <div className="col-md-6 mx-auto text-left">
             <p className="motto-tagline">#Invest, #Support, #GetBenefit</p>
             <h1 className="motto-title">
@@ -24,7 +24,10 @@ let Introduction = () => {
             </button>
           </div>
 
-          <div className="col-md-6 mx-auto text-right motto-top-img">
+          <div
+            className="col-md-6 mx-auto text-right motto-top-img"
+            data-aos="fade-left"
+          >
             <img src={img} alt="motto-top" className="img-fluid h-100" />
           </div>
         </div>

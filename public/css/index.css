@@ -60,6 +60,14 @@ body{background-color: white;}
     background-size: cover;
     background-position: center;
 }
+.jumbotron-cara-kerja {
+    background-image: url('../asset/img/JumbotronMitra.jpeg');
+    color: white;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .jumbotron-content{
     background-color: rgba(0, 0, 0, 0.7);
     height: 100vh;

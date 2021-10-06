@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import logo from "../asset/img/logo/NEW-INVESTA.png";
+
 let Navbar = () => {
   const location = useLocation();
   const nowLocation = location.pathname;
@@ -61,33 +62,12 @@ let Navbar = () => {
             >
               Mitra
             </Link>
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Lainnya
-              </Link>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link className="dropdown-item" to="#">
-                  Tentang Kami
-                </Link>
-                <Link className="dropdown-item" to="#">
-                  FAQ
-                </Link>
-              </div>
-            </li>
           </div>
           <div className="navbar-nav ml-auto">
-            <Link to="login.html" className="nav-item nav-link">
+            <Link to="#" className="nav-item nav-link">
               Login
             </Link>
-            <Link to="register.html" className="nav-item nav-link">
+            <Link to="#" className="nav-item nav-link">
               Register
             </Link>
           </div>

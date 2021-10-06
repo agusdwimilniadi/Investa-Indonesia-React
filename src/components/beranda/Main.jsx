@@ -1,5 +1,6 @@
 import { useSubscription } from "@apollo/client";
 import gql from "graphql-tag";
+import { Link } from "react-router-dom";
 import LoadingSvg from "../asset/img/Loading";
 import Card from "../card/Card";
 import Introduction from "./Introduction";
@@ -66,7 +67,7 @@ let Main = () => {
       <section className="proyek">
         <div className="proyek-container">
           <div className="container">
-            <div className="proyek-title text-center">
+            <div className="proyek-title text-center" data-aos="fade-down">
               <span>Proyek</span>
             </div>
             <div className="row align-items-center justify-content-center">
@@ -101,10 +102,10 @@ let Main = () => {
             <div className="row align-items-center justify-content-center text-center mt-3">
               <div className="col-md-12">
                 <p>
-                  <a href="proyek.html">
+                  <Link to="/proyek">
                     Lihat Semua Proyek{" "}
                     <i className="fa fa-arrow-alt-circle-right" />
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

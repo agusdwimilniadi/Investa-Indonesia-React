@@ -13,7 +13,10 @@ let JoinInvesta = () => {
         <div className="row align-items-center justify-content-center text-center">
           <div className="col-md-12">
             <div className="owl-carousel owl-theme my-5">
-              <div className="row align-items-center justify-content-center item">
+              <div
+                className="row align-items-center justify-content-center item"
+                data-aos="fade-right"
+              >
                 <div className="hImg-container-custom mx-5">
                   <img src={logo1} alt="icon" className="hImg-custom" />
                 </div>
@@ -23,7 +26,10 @@ let JoinInvesta = () => {
                   mendapatkan izin untuk bertransaksi online.
                 </span>
               </div>
-              <div className="row align-items-center justify-content-center item">
+              <div
+                className="row align-items-center justify-content-center item"
+                data-aos="fade-right"
+              >
                 <div className="hImg-container-custom mx-5">
                   <img src={logo2} alt="icon" className="hImg-custom" />
                 </div>
@@ -33,7 +39,10 @@ let JoinInvesta = () => {
                   melaksanakan penanaman pertanian.
                 </span>
               </div>
-              <div className="row align-items-center justify-content-center item">
+              <div
+                className="row align-items-center justify-content-center item"
+                data-aos="fade-left"
+              >
                 <div className="hImg-container-custom mx-5">
                   <img src={logo3} alt="icon" className="hImg-custom" />
                 </div>
@@ -43,7 +52,10 @@ let JoinInvesta = () => {
                   seluruh kegiatan disini tidak memiliki Riba
                 </span>
               </div>
-              <div className="row align-items-center justify-content-center item">
+              <div
+                className="row align-items-center justify-content-center item"
+                data-aos="fade-left"
+              >
                 <div className="hImg-container-custom mx-5">
                   <img src={logo4} alt="icon" className="hImg-custom" />
                 </div>

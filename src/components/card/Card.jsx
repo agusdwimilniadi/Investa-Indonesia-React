@@ -54,7 +54,7 @@ let Card = ({
   // END DELETE
   return (
     <>
-      <div>
+      <div data-aos="fade-down">
         <div className="card mt-4">
           {nowLocation == "/" ? null : (
             <>

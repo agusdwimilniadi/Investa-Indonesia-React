@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import loadingAnimate from "../asset/img/Loading.svg";
 
 const EditMitra = ({
   id,

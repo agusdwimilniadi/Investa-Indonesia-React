@@ -1,7 +1,9 @@
 import { Route, Switch } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import AOS from "aos";
 import Main from "./components/beranda/Main";
+import CaraKerja from "./components/carakerja/CaraKerja";
 import DetailProyek from "./components/detailProyek/detailProyek";
 import Footer from "./components/Footer/Footer";
 import Investasi from "./components/investasi/Investasi";
@@ -9,8 +11,14 @@ import EditMitra from "./components/mitra/EditMitra";
 import Mitra from "./components/mitra/Mitra";
 import Navbar from "./components/Navbar/Navbar";
 import Proyek from "./components/proyek/Proyek";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
   const LoginContainer = () => <></>;
   const DefaultContainer = () => (
     <>
@@ -21,6 +29,7 @@ function App() {
       <Route path="/investasi/:id" exact component={Investasi} />
       <Route path="/mitra" exact component={Mitra} />
       <Route path="/edit/:id" exact component={EditMitra} />
+      <Route path="/carakerja" exact component={CaraKerja} />
 
       <Footer />
     </>
