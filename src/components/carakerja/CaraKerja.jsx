@@ -29,7 +29,10 @@ const CaraKerja = () => {
       <section class="work-odd">
         <div class="odd-poly py-5">
           <div class="container py-5">
-            <div class="row align-items-center justify-content-center">
+            <div
+              class="row align-items-center justify-content-center"
+              data-aos="fade-right"
+            >
               <div class="col-md-6">
                 <div class="img-step w-50 m-auto">
                   <img src={logo1} alt="step" class="w-100" />
@@ -51,7 +54,10 @@ const CaraKerja = () => {
       <section class="work-even">
         <div class="even-poly pb-5">
           <div class="container py-5">
-            <div class="row align-items-center justify-content-center">
+            <div
+              class="row align-items-center justify-content-center"
+              data-aos="fade-left"
+            >
               <div class="col-md-6 text-left">
                 <h3>
                   <strong>Dana Terkumpul dan Mulai.</strong>
@@ -73,7 +79,10 @@ const CaraKerja = () => {
       <section class="work-odd">
         <div class="odd-poly py-5">
           <div class="container py-5">
-            <div class="row align-items-center justify-content-center">
+            <div
+              class="row align-items-center justify-content-center"
+              data-aos="fade-right"
+            >
               <div class="col-md-6">
                 <div class="img-step w-50 m-auto">
                   <img src={logo3} alt="step" class="w-100" />
@@ -95,7 +104,10 @@ const CaraKerja = () => {
       <section class="work-even-last">
         <div class="even-poly pb-5">
           <div class="container py-5">
-            <div class="row align-items-center justify-content-center">
+            <div
+              class="row align-items-center justify-content-center"
+              data-aos="fade-left"
+            >
               <div class="col-md-6 text-left">
                 <h3>
                   <strong>Panen dan Bagi Hasil.</strong>

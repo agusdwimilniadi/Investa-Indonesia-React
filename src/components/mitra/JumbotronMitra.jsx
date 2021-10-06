@@ -20,7 +20,7 @@ let JumbotronMitra = () => {
             </div>
           </div>
         </section>
-        <section className="box px-5">
+        <section className="box px-5" data-aos="fade-up">
           <div className="container boxess">
             <div className="row mx-auto h-100">
               <div className="col-md-12 my-auto h-100 p-3">

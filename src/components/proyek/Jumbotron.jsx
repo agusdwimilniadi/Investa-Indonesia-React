@@ -16,7 +16,7 @@ let Jumbotron = () => {
           </div>
         </div>
       </section>
-      <div>
+      <div data-aos="fade-up">
         <section className="box px-5">
           <div className="container boxes">
             <div className="row mx-auto h-100">
